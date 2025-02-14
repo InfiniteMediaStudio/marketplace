@@ -1,0 +1,33 @@
+---
+export const partial = true;
+import Switcher from '../component/Switcher.astro';
+import Menus from './Menus.astro';
+const {active} = Astro.props;
+---
+
+<header  x-data="{ expanded: false }">
+  <div class="container flex flex-row justify-between items-center py-5">
+    <div class="title">MarketPlace</div>
+    <div class="hidden md:flex main-menu">
+      <Menus active={active} styles="link text-sm" />
+    </div>
+    <div class="flex flex-row gap-3 items-center">
+      <Switcher />
+      <button class="btn-icon md:hidden flex" @click="expanded = !expanded" :aria-expanded="expanded">
+          <span x-cloak :class="{'hidden': expanded, '': !expanded}"><i class="fas fa-bars"></i></span>
+          <span x-cloak :class="{'': expanded, 'hidden': !expanded}"><i class="fas fa-times"></i></span>
+      </button>
+      <a href="/auth/signin" class="btn-blue">Signin</a>
+    </div>
+  </div>
+  <div class="grid transition-all duration-300 container" :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 invisible'" x-cloak>
+    <div class="overflow-hidden before:block before:w-full before:h-px">
+        <div class="divider mb-5"></div>
+        <div class="mobile-menu">
+          <Menus active={active} styles="link text-sm" />
+        </div>
+        <div class="spacer"></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</header>

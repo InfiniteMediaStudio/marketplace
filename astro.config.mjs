@@ -1,5 +1,10 @@
 import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
+import alpinejs from "@astrojs/alpinejs";
+import vercel from "@astrojs/vercel";
 export default defineConfig({
-  // Configuration for the Astro project
-  devToolbar: { enabled: false }, // Disable the development toolbar
+  integrations: [tailwind(), alpinejs()],
+  output: "server",
+  adapter: vercel(),
+  devToolbar: { enabled: false }, 
 });

@@ -1,0 +1,54 @@
+---
+import Layout from '../../app/Layout.astro';
+---
+<Layout>
+	<div class="max-w-md mx-auto card my-5 text-center">
+		<div class="title">Login to</div>
+		<div class="title-blue">Marketplace</div>
+		<div class="divider my-5"></div>
+		<div id="error-message" class="text-center text-red-500 text-sm"></div>
+		<form id="login-form" class="form flex flex-col gap-4">
+			<div class="input-icon">
+				<!-- <i class="fas fa-envelope lightgray left-4 icon"></i> -->
+				<input 
+					id="email" 
+					name="email"
+					type="text"  
+					class="input w-full" 
+					placeholder="name@email.com"
+				/>
+			</div>
+			<div class="input-icon" x-data="{ loginShow: false }">
+				<!-- <i class="fas fa-key lightgray left-4 icon"></i> -->
+				<!-- <button type="button" @click="loginShow = !loginShow" class="absolute top-2.5 right-4 text gray">
+					<i x-show="loginShow" class="far fa-eye" style="display: none;"></i>
+					<i x-show="!loginShow" class="far fa-eye" ></i>
+				</button> -->
+				<input 
+					:type=" loginShow ? 'text': 'password' " 
+					class="input w-full" 
+					name="password" 
+					id="password" 
+					placeholder="Your Password" 
+				/>
+			</div>				
+			<div class="flex flex-row items-center justify-between">
+				<label for="remember" class="flex flex-row items-center gap-2">
+					<input id="remember" aria-describedby="remember" type="checkbox"/>
+					<span class="text">Remember me</span>
+				</label>
+				<a href="/auth/forgot-password" class="link text-sm active" >Forgot password?</a>
+			</div>
+			<button type="submit" class="btn-blue mx-auto">Sign in</button>
+		</form>
+		<div class="text opacity-50 py-2">Or</div>
+		<form action="/auth/signin" method="post">
+			<button value="google" name="provider" class="mx-auto btn-default" type="submit">Sign in with Google</button>
+		</form>
+		<div class="divider my-5"></div>
+		<div class="flex flex-col sm:flex-row justify-center items-center gap-1">
+			<p class="text pr-2">Don’t have an account yet?</p>
+			<a href="/auth/signup" class="link active">Register</a>
+		</div>
+	</div>
+</Layout>

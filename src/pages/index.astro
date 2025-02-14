@@ -1,7 +1,20 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import Layout from '../app/Layout.astro';
 ---
-<MainLayout>
-  <h1>Welcome to the Fresh Marketplace</h1>
-  <p>Your one-stop shop for everything fresh!</p>
-</MainLayout>
+<Layout active="home">
+  <div class="card text-center">
+		<div class="spacer my-5"></div>
+		<div class="w-full">
+			<div class="title">Welcome to</div>
+			<div class="text-4xl mb-2 uppercase text-blue font-light">Marketplace</span></div>
+			<div class="title mb-2 italic">Your Ultimate Classified Marketplace</div>
+			<p class="mb-1 text-lg font-light text">A Bridges between Customers, Sellers and Service Providers</p>
+			<div class="text mt-2">Join us to experience a marketplace where relationships and opportunities flourish, all in one place.</div>
+			<div class="rounded-full flex flex-row items-center w-fit mx-auto mt-4">
+				<a href="/auth/signin" class="btn-blue">Get Started</a>
+				<div class="text ml-3 mr-3">Its Free!</div>
+			</div>
+		</div>
+		<div class="spacer my-5"></div>
+	</div>
+</Layout>
