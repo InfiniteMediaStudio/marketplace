@@ -8,56 +8,30 @@ import Layout from '../../app/Layout.astro';
 		<div class="divider my-5"></div>
 		<form  id="register-form" class="form flex flex-col gap-5">
 			<div class="input-icon">
-				<!-- <i class="fas fa-user icon gray left-4"></i> -->
-				<input 
-					id="name" 
-					name="name" 
-					type="text" 
-					class="input w-full" 
-					placeholder="Full Name"
-					required
-				/>
+				<i class="fas fa-user left-4"></i>
+				<input id="name" name="name" type="text" placeholder="Full Name" required />
 			</div>
 			<div class="input-icon">
-				<!-- <i class="fas fa-envelope icon gray left-4"></i> -->
-				<input 
-					id="email" 
-					name="email" 
-					type="email" 
-					class="input w-full" 
-					placeholder="name@email.com"
-					required 
-				/>
+				<i class="fas fa-envelope left-4"></i>
+				<input id="email" name="email" type="email" placeholder="name@email.com" required />
 			</div>
 			<div class="input-icon">
-				<!-- <i class="fas fa-phone icon gray left-4"></i> -->
-				<input 
-					id="phone" 
-					name="phone" 
-					type="text"  
-					class="input w-full" 
-					placeholder="Phone Number"
-					required
-				/>
+				<i class="fas fa-phone left-4"></i>
+				<input id="phone" name="phone" type="text" placeholder="Phone Number" required/>
 			</div>
 			<div class="input-icon" x-data="{ loginShow: false }">
-				<!-- <i class="fas fa-key lightgray left-4 icon"></i>
-				<button type="button" @click="loginShow = !loginShow" class="absolute top-2.5 right-4 text gray">
-					<i x-show="loginShow" class="far fa-eye" style="display: none;"></i>
+				<i class="fas fa-key left-4"></i>
+				<button type="button" @click="loginShow = !loginShow" class="absolute top-0 right-8">
+					<i x-cloak x-show="loginShow" class="far fa-eye-slash"></i>
 					<i x-show="!loginShow" class="far fa-eye" ></i>
-				</button> -->
-				<input 
-					:type=" loginShow ? 'text': 'password' " 
-					class="input w-full" 
-					name="password" 
-					id="password" 
-					placeholder="Your Password" 
-				/>
-			</div>	
-			<label for="terms" class="text">
-				<input id="terms" aria-describedby="terms" type="checkbox" required=""/>
-				 I accept the <a  class="link active" type="button">Terms and Policies</a>
-			</label>
+				</button>
+				<input :type=" loginShow ? 'text': 'password' " name="password" id="password" placeholder="Your Password" />
+			</div>
+			<div class="flex flex-row items-center justify-center gap-2">
+				<input id="terms" aria-describedby="terms" type="checkbox"/>
+				<label for="terms" class="text cursor-pointer mt-1"> I accept the</label>
+				<a  class="link active text-sm" type="button">Terms &amp; Policies</a>
+			</div>
 			<button type="submit" class="btn-blue mx-auto">Create Account</button>
 		</form>
 		<div class="divider my-5"></div>

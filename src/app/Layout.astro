@@ -2,14 +2,15 @@
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import FooterCTA from "../component/FooterCTA.astro";
-import Base from './base.astro';
+import Base from './Base.astro';
 const {active} = Astro.props;
 ---
 <Base>
     <Header active={active} />
-    <div class="container py-5">
+    <div class="container my-5 lg:my-7">
       <slot />
       <FooterCTA/>
+      <div class="spacer"></div>
       <Footer />
     </div>
 </Base>

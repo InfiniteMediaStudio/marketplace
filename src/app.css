@@ -28,7 +28,7 @@ section { @apply w-full my-8 lg:my-12 }
 .text-green { @apply text-green-600 }
 
 /* button */
-.link{ @apply text-gray-800 dark:text-gray-200 }
+.link{ @apply text-gray-800 dark:text-gray-200 cursor-pointer }
 .link:hover, .link.active{ @apply text-blue-500 }
 .btn-blue, .btn-green, .btn-default{ @apply text-sm font-normal rounded-full px-4 py-2.5 text-center cursor-pointer w-fit whitespace-nowrap shadow-md }
 .btn-default, .btn-icon { @apply text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border shadow-md }
@@ -36,12 +36,10 @@ section { @apply w-full my-8 lg:my-12 }
 .btn-blue, .btn-default.active, .btn-icon.active { @apply text-white bg-blue-500 dark:bg-blue-600 }
 .btn-green { @apply text-white bg-green-600 }
 .btn-icon{ @apply flex justify-center items-center w-10 h-10 rounded-full text-base text-center }
+.btn-icon i{ @apply block }
 .btn-icon.sm { @apply w-9 h-9 text-sm leading-none }
 .btn-icon.green { @apply bg-green-600 text-white dark:text-white }
 .btn-icon.disabled, .btn-default.disabled { @apply opacity-50 pointer-events-none }
-.btn-icon.green .btn-svg, .btn-green .btn-svg, .btn-blue .btn-svg { @apply fill-white dark:fill-white }
-.btn-default .btn-svg, .btn-icon .btn-svg, .icon-svg { @apply fill-gray-800 dark:fill-gray-100 }
-.icon-achievement { @apply fill-gray-500 dark:fill-gray-400 }
 
 /* desktop nav */
 .main-menu{ @apply hidden lg:flex items-center relative }
@@ -49,14 +47,10 @@ section { @apply w-full my-8 lg:my-12 }
 .main-menu ul>li { @apply relative }
 .main-menu ul>li>a { @apply block px-2 link font-medium w-full  }
 .main-menu ul>li>ul { @apply w-fit absolute left-0 top-[38px] pt-5 hidden  }
-.main-menu ul>li:hover ul.sub-menu { @apply block shadow-lg transition duration-500 ease-in-out rounded-b-3xl }
-.main-menu ul>li.current-menu>a, .main-menu ul>li.current-menu-parent>a,
-.main-menu ul>li.current-menu-ancestor>a,.main-menu ul>li.current-page-ancestor>a { @apply text-blue-500 }
-.main-menu ul.sub-menu>li { @apply bg-gray-50 dark:bg-gray-700 px-5 py-1 border-x }
-.main-menu ul.sub-menu>li:first-child { @apply pt-5 border border-b-0 }
-.main-menu ul.sub-menu>li:last-child { @apply pb-5 rounded-b-3xl border border-t-0  }
-.main-menu ul.sub-menu>li>a { @apply link font-normal whitespace-nowrap block }
-.main-menu ul.sub-menu>li.current-menu>a { @apply text-blue-500  }
+
+/* mobile nav */
+.mobile-menu ul { @apply flex flex-col justify-start gap-3 }
+.mobile-menu ul>li>a { @apply link font-medium block }
 
 /* footer nav */
 .footer-menu{ @apply items-center relative flex justify-center whitespace-nowrap }
@@ -64,13 +58,7 @@ section { @apply w-full my-8 lg:my-12 }
 .footer-menu ul.menu>li.menu-item>a { @apply link font-normal block text-sm md:text-base}
 .footer-menu ul.menu>li.menu-item.current-menu-item>a, .footer-menu ul.menu>li.menu-item.current-page-ancestor>a{ @apply text-blue-500 }
 
-/* mobile nav */
-.mobile-menu ul.menu { @apply flex flex-col justify-start gap-3 }
-.mobile-menu ul.menu>li.menu-item>a { @apply link font-medium block }
-.mobile-menu ul.menu>li.menu-item.current-menu-item>a, .mobile-menu ul.menu>li.menu-item.current-page-ancestor>a{ @apply text-blue-500 }
-.mobile-menu ul.sub-menu { @apply px-2 py-3 flex flex-col gap-3 }
-.mobile-menu ul.sub-menu>li.menu-item>a { @apply link font-normal before:content-['-'] before:pr-3 block }
-.mobile-menu ul.sub-menu>li.menu-item.current-menu-item>a { @apply text-blue-500  }
+
 
 /* other nav */
 .other-menu { @apply flex flex-row justify-center }
@@ -86,14 +74,16 @@ section { @apply w-full my-8 lg:my-12 }
 
 /* forms */
 .form label{ @apply text-sm font-medium text-gray-800 dark:text-gray-200 mb-1 block }
-/* .form label input, .form label select, .form label textarea{ @apply mt-1 } */
 .form input, .form select, .form textarea { @apply text-sm block border px-4 py-2.5 placeholder:italic w-full text-gray-900 dark:text-white placeholder:text-gray-400 bg-gray-50 dark:bg-gray-900/50 }
 .form input, .form select { @apply rounded-full }
 .form textarea { @apply rounded-3xl min-h-20 }
 .form input:focus, .form select:focus, .form textarea:focus{ @apply border-blue-500 shadow outline-none }
 .form input[type="file"]{ @apply file:cursor-pointer p-0 file:mr-4 file:py-2.5 file:px-4 m-1 file:rounded-full file:text-sm file:font-normal focus:ring-0 file:border-0 file:border-r file:border-gray-400/50 file:dark:border-gray-600/50 file:bg-white file:dark:bg-gray-600 file:text-gray-800 file:dark:text-white }
 .form select option { @apply bg-gray-50 dark:bg-gray-700 }
-
+.form .input-icon i{@apply absolute top-3 text-gray-400 dark:text-gray-600 }
+.form .input-icon {@apply relative }
+.form .input-icon input{@apply px-10 }
+.form input[type="checkbox"]{ @apply p-0 m-0 cursor-pointer h-4 w-4 }
 /* scrollbar */
 ::-webkit-scrollbar { @apply w-2 h-2 }
 ::-webkit-scrollbar-thumb { @apply bg-gray-500 rounded }
