@@ -1,0 +1,50 @@
+---
+import Layout from '../../app/Layout.astro';
+const { cookies, redirect } = Astro;
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+if (accessToken && refreshToken) {
+  return redirect("/dashboard");
+}
+---
+<Layout>
+  <div class="max-w-md mx-auto card text-center">
+    <div class="title">Login to</div>
+    <div class="title-blue">Marketplace</div>
+    <div class="divider my-5"></div>
+    <div id="error-message" class="text-center text-red-500 text-sm"></div>
+    <form class="form flex flex-col gap-4" action="/api/auth/signin" method="POST">
+      <div class="input-icon">
+        <i class="fas fa-envelope left-4"></i>
+        <input id="email" name="email" type="text" placeholder="name@email.com" required/>
+      </div>
+      <div class="input-icon" x-data="{ loginShow: false }">
+        <i class="fas fa-key left-4"></i>
+        <button type="button" @click="loginShow = !loginShow" class="absolute top-0 right-8">
+          <i x-cloak x-show="loginShow" class="far fa-eye-slash"></i>
+		     <i x-show="!loginShow" class="far fa-eye"></i>
+        </button>
+        <input :type="loginShow ? 'text' : 'password'" name="password" id="password" placeholder="Your Password" required/>
+      </div>
+      <div class="flex flex-row items-center justify-between">
+        <div class="flex flex-row items-center gap-3">
+          <input id="remember" aria-describedby="remember" type="checkbox"/>
+          <label for="remember" class="text mt-1">Remember me</label>
+        </div>
+        <a href="/authentication/forgot-password" class="link text-sm active">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn-blue mx-auto">Sign in with email</button>
+    </form>
+    <div class="text opacity-50 py-2">or</div>
+    <form action="/api/auth/signin" method="post">
+      <button value="google" name="provider" class="mx-auto btn-default flex flex-row gap-3" type="submit">
+        <img src="/src/assets/google.svg" class="w-5 h-5" alt="Sign in with Google">Sign in with Google
+      </button>
+    </form>
+    <div class="divider my-5"></div>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-3">
+      <p class="text">Don't have an account yet?</p>
+      <a href="/authentication/register" class="link active">Register</a>
+    </div>
+  </div>
+</Layout>
